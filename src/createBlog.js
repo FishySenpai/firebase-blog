@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {addDoc, collection} from 'firebase/firestore'
 import { db, auth } from './firebase-config';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,8 @@ const CreateBlog = () => {
         await addDoc(blogsCollection, {title, blog, author:{name: auth.currentUser.displayName, id: auth.currentUser.uid}})
         navigate("/")
     }
+    
+    
   return (
     <div className="bg-gray-400 flex flex-col">
       <div className="flex flex-col">
