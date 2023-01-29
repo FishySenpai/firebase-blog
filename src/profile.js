@@ -21,7 +21,7 @@ const Profile = () => {
           {user ? localStorage.getItem("name") : <Link to="/login">Login</Link>}
         </h1>
       </div>
-      <button onClick={logOut}>Log Out</button>
+      <button onClick={logOut}>{user ?"Log Out" : ""}</button>
     </div>
   );
 };
