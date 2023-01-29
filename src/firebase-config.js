@@ -1,18 +1,34 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA_waP36y5ppMLAWx3lA0whsDpZPQhtsFE",
-  authDomain: "fir-blog-20192.firebaseapp.com",
-  projectId: "fir-blog-20192",
-  storageBucket: "fir-blog-20192.appspot.com",
-  messagingSenderId: "43924930444",
-  appId: "1:43924930444:web:321ee7d7d0f60985e960a9",
+  apiKey: "AIzaSyBiTNLnb0MeH9W0O8ORlh8dbS0FaKSC0Ps",
+  authDomain: "fir-auth-fb502.firebaseapp.com",
+  projectId: "fir-auth-fb502",
+  storageBucket: "fir-auth-fb502.appspot.com",
+  messagingSenderId: "933562675822",
+  appId: "1:933562675822:web:f4b3ceec1df7ce0bf3ac7f",
+  measurementId: "G-Z2RYYDKV3V",
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
+const provider = new GoogleAuthProvider();
 
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      const name = result.user.displayName;
+      const email = result.user.email;
+      const profilePic = result.user.photoURL;
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+      localStorage.setItem("profilePic", profilePic);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
