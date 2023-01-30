@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { async } from "@firebase/util";
 import { getDocs, doc, deleteDoc, collection } from 'firebase/firestore';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {db} from "./firebase-config"
 
 const BlogList = () => {
@@ -20,19 +22,30 @@ const BlogList = () => {
 
     }
   return (
-    <div>
-        {blogList.map((blogs)=>{
-            return (
-              <div>
-                <div>{blogs.title}</div>
-                <div>{blogs.blog}</div>
-                <div>{blogs.author.name}</div>
-                <button onClick={()=>{deleteBlog(blogs.id)}}>Delete</button>
-              </div>
-            );
-        })}
+    <div className="flex flex-col text-center p-4">
+      {blogList.map((blogs) => {
+        return (
+          <div className="text-center content-center ">
+            <div className="flex flex-row text-center justify-center relative">
+              <div className="text-3xl capitalize">{blogs.title}</div>
+              <button
+                className="absolute top-0 right-52"
+                onClick={() => {
+                  deleteBlog(blogs.id);
+                }}
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
+            <div className="text-l mx-48 text-left">{blogs.blog}</div>
+            <div className="text-2xl text-right mr-48 italic">
+              @{blogs.author.name}
+            </div>
+          </div>
+        );
+      })}
     </div>
-  )
+  );
 }
 
 export default BlogList
