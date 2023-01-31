@@ -8,7 +8,7 @@ import BlogList from './blogList';
 
 function App() {
   return (
-    <div className="App bg-slate-100">
+    <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<BlogList />} />

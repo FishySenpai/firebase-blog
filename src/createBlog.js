@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {addDoc, collection} from 'firebase/firestore'
 import { db, auth } from './firebase-config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const CreateBlog = () => {
     const [title, setTitle] = useState("");
@@ -11,7 +11,6 @@ const CreateBlog = () => {
     const navigate = useNavigate;
     const createBlog = async ()=>{
         await addDoc(blogsCollection, {title, blog, author:{name: auth.currentUser.displayName, id: auth.currentUser.uid}})
-        navigate("/")
     }
     
     
@@ -40,7 +39,9 @@ const CreateBlog = () => {
         </div>
       </div>
       <div>
-        <button onClick={createBlog}>Submit</button>
+        <button onClick={createBlog}>
+          <Link to="/">Submit</Link>
+        </button>
       </div>
     </div>
   );
