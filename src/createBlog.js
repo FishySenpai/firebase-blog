@@ -15,11 +15,14 @@ const CreateBlog = () => {
     
     
   return (
-    <div className="bg-gray-400 flex flex-col">
+    <div className="flex flex-col absolute left-96 top-28 ">
       <div className="flex flex-col">
-        <label>Title</label>
-        <div>
+        <label className="text-left py-2 text-2xl text-gray-800 italic">
+          Title
+        </label>
+        <div className="">
           <input
+            className="rounded-sm p-2 w-[388px] boxShadow"
             placeholder="Title.."
             onChange={(e) => {
               setTitle(e.target.value);
@@ -28,10 +31,13 @@ const CreateBlog = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <label>Create Blog</label>
+        <label className="text-left py-3 text-2xl text-gray-800 italic">
+          Write Blog
+        </label>
         <div>
           <textarea
-            placeholder="Create Blog.."
+            className="rounded-sm p-2 w-[388px] boxShadow h-[100px]"
+            placeholder="Write Blog.."
             onChange={(e) => {
               setBlog(e.target.value);
             }}
@@ -39,7 +45,10 @@ const CreateBlog = () => {
         </div>
       </div>
       <div>
-        <button onClick={createBlog}>
+        <button
+          className="bg-slate-600 rounded-sm text-gray-300 text-xl px-2 m-2"
+          onClick={createBlog}
+        >
           <Link to="/">Submit</Link>
         </button>
       </div>

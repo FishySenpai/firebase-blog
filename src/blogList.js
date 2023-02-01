@@ -22,26 +22,28 @@ const BlogList = () => {
 
     }
   return (
-    <div className="flex flex-col text-center p-4">
+    <div className="flex flex-col text-center p-4 space-y-6">
       {blogList.map((blogs) => {
         return (
-          <div className="pt-4 text-center content-center p-2 border-solid border-2 border-slate-200 w-[1000px] ml-64">
-            <div className="flex flex-row text-center justify-center relative">
-              <div className="text-3xl capitalize">{blogs.title}</div>
-              <button
-                className="absolute top-0 right-6"
-                onClick={() => {
-                  deleteBlog(blogs.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-            </div>
-            <div className="text-l text-left">{blogs.blog}</div>
-            <div className="text-2xl text-right italic">
-              @{blogs.author.name}
-            </div>
-          </div>
+          <ul className="pt-4 text-center content-center p-2 border-solid border-2 border-slate-200 w-[1000px] ml-64">
+            <li className="">
+              <div className="flex flex-row text-center justify-center relative">
+                <div className="text-3xl capitalize">{blogs.title}</div>
+                <button
+                  className="absolute top-0 right-6"
+                  onClick={() => {
+                    deleteBlog(blogs.id);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </div>
+              <div className="text-l text-left">{blogs.blog}</div>
+              <div className="text-2xl text-right italic">
+                @{blogs.author.name}
+              </div>
+            </li>
+          </ul>
         );
       })}
     </div>
